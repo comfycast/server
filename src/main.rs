@@ -27,6 +27,7 @@ async fn main() -> Result<()> {
 
 #[derive(Debug, Deserialize, Serialize)]
 struct Video {
+    name: String,
     id: String,
 }
 
@@ -36,6 +37,7 @@ async fn videos() -> Json<Vec<Video>> {
 
     for e in 0..num {
         list.push(Video {
+            name: format!("A very cool video number {e}"),
             id: format!("real-id-{e}"),
         });
     }
