@@ -13,12 +13,18 @@ strip = true
 [dependencies]
 anyhow = "1.0.92"
 axum = { version = "0.7.7", features = ["http2", "macros", "ws"] }
+fancy-ffmpeg = { version = "0.0.1", features = ["tokio"] }
+itertools = "0.13.0"
 serde = { version = "1.0.214", features = ["derive"] }
-tokio = { version = "1.41.0", features = ["rt-multi-thread", "macros"] }
-tower-http = { version = "0.6.1", features = ["cors"] }
+tokio = { version = "1.41.0", features = ["rt-multi-thread", "macros", "process", "fs"] }
+tower = "0.5.1"
+tower-http = { version = "0.6.1", features = ["compression-full", "cors", "decompression-full"] }
 tracing = "0.1.40"
 tracing-subscriber = { version = "0.3.18", features = ["env-filter", "tracing-log"] }
 utoipa = { version = "5.2.0", features = ["axum_extras", "uuid"] }
 utoipa-axum = "0.1.2"
 utoipa-scalar = "0.2.0"
 uuid = { version = "1.11.0", features = ["serde", "v4"] }
+
+[patch.crates-io]
+fancy-ffmpeg = { path = "../fancy-ffmpeg" }
