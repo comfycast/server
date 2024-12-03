@@ -11,16 +11,28 @@ codegen-units = 1
 strip = true
 
 [dependencies]
-anyhow = "1.0.92"
-axum = { version = "0.7.7", features = ["http2", "macros", "ws"] }
+anyhow = "1.0.93"
+axum = { version = "0.7.9", features = ["http2", "macros", "ws"] }
 fancy-ffmpeg = { version = "0.0.1", features = ["tokio"] }
 itertools = "0.13.0"
-serde = { version = "1.0.214", features = ["derive"] }
-tokio = { version = "1.41.0", features = ["rt-multi-thread", "macros", "process", "fs"] }
+serde = { version = "1.0.215", features = ["derive"] }
+tokio = { version = "1.42.0", features = [
+    "rt-multi-thread",
+    "macros",
+    "process",
+    "fs",
+] }
 tower = "0.5.1"
-tower-http = { version = "0.6.1", features = ["compression-full", "cors", "decompression-full"] }
-tracing = "0.1.40"
-tracing-subscriber = { version = "0.3.18", features = ["env-filter", "tracing-log"] }
+tower-http = { version = "0.6.2", features = [
+    "compression-full",
+    "cors",
+    "decompression-full",
+] }
+tracing = "0.1.41"
+tracing-subscriber = { version = "0.3.19", features = [
+    "env-filter",
+    "tracing-log",
+] }
 utoipa = { version = "5.2.0", features = ["axum_extras", "uuid"] }
 utoipa-axum = "0.1.2"
 utoipa-scalar = "0.2.0"
