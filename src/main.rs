@@ -1,4 +1,4 @@
-use std::path::PathBuf;
+use std::{net::Ipv4Addr, path::PathBuf};
 
 use anyhow::Result;
 use axum::{extract::Path, http::header, response::IntoResponse, routing::get, Json, Router};
@@ -31,7 +31,7 @@ async fn main() -> Result<()> {
                 .layer(CompressionLayer::new()),
         );
 
-    let listener = tokio::net::TcpListener::bind("0.0.0.0:8008").await?;
+    let listener = tokio::net::TcpListener::bind((Ipv4Addr::UNSPECIFIED, 8008)).await?;
     info!("Started server on port 8008");
     axum::serve(listener, app).await?;
     Ok(())
