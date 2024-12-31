@@ -13,20 +13,27 @@ strip = true
 [dependencies]
 anyhow = "1.0.93"
 axum = { version = "0.7.9", features = ["http2", "macros", "ws"] }
+bytes = "1.9.0"
 fancy-ffmpeg = { version = "0.0.1", features = ["tokio"] }
+futures = "0.3.31"
+gstreamer = { version = "0.23.3", features = ["log"] }
 itertools = "0.13.0"
+lru = "0.12.5"
 serde = { version = "1.0.215", features = ["derive"] }
+thiserror = "2.0.4"
 tokio = { version = "1.42.0", features = [
     "rt-multi-thread",
     "macros",
     "process",
     "fs",
 ] }
+tokio-stream = "0.1.16"
 tower = "0.5.1"
 tower-http = { version = "0.6.2", features = [
     "compression-full",
     "cors",
     "decompression-full",
+    "fs",
 ] }
 tracing = "0.1.41"
 tracing-subscriber = { version = "0.3.19", features = [
