@@ -131,44 +131,9 @@ async fn generate_segment(Path((stream_id, segment)): Path<(Uuid, String)>) -> i
             .output()
             .await
             .unwrap();
-
-        // if !output.status.success() {
-        //     // FIXME: handle ffmpeg errors
-        //     println!("{}", String::from_utf8_lossy(&output.stderr));
-        //     panic!("aaaaaaaaa");
-        // }
-
-        // println!("{}", String::from_utf8_lossy(&output.stdout));
-        // println!("{}", String::from_utf8_lossy(&output.stderr));
     }
 
     let segment = fs::read(segment_path).await.unwrap();
 
     ([(header::CONTENT_TYPE, "video/mp2t")], segment)
 }
-
-// ffmpeg -i temp/BigBuckBunny.mp4 \
-//        -ss 30 \
-//        -t 6 \
-//        -copyts \
-//        -avoid_negative_ts make_zero \
-//        -c:v libx264 \
-//        -preset ultrafast \
-//        -tune zerolatency \
-//        -profile:v baseline \
-//        -x264opts no-scenecut:keyint=60:min-keyint=60 \
-//         -maxrate 3000k \
-//         -bufsize 6000k \
-//         -c:a aac \
-//         -ac 2 \
-//         -ar 44100 \
-//         -b:a 128k \
-//        -vsync cfr \
-//        -copyinkf \
-//        -individual_header_trailer 0 \
-//        -flush_packets 1 \
-//        -fflags +genpts \
-//        -hls_segment_type mpegts \
-//        -hls_flags single_file \
-//        -f segment \
-//        "segment_%d.ts"
