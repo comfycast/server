@@ -21,9 +21,9 @@ async fn main() -> Result<()> {
 
     let app = Router::new()
         .route("/videos", get(videos))
-        .route("/stream/create/:video", get(create_stream))
-        .route("/stream/:id/master.m3u8", get(stream))
-        .route("/stream/:id/:segment.ts", get(generate_segment))
+        .route("/stream/create/{video}", get(create_stream))
+        .route("/stream/{id}/master.m3u8", get(stream))
+        .route("/stream/{id}/{segment}", get(generate_segment))
         .layer(
             ServiceBuilder::new()
                 .layer(CorsLayer::new().allow_origin(Any).allow_methods(Any))
